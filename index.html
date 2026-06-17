@@ -6,15 +6,9 @@
 <title>简历 — 小红书营销 / 内容增长运营（AI教育方向）</title>
 <style>
   :root {
-    --bg: #f5f5f7;
-    --bg-card: #ffffff;
-    --bg-glass: rgba(255,255,255,0.72);
-    --text: #1d1d1f;
-    --text-secondary: #86868b;
-    --text-tertiary: #6e6e73;
-    --accent: #0071e3;
-    --accent-hover: #0077ed;
-    --accent-subtle: #e8f0fe;
+    --bg: #f5f5f7; --bg-card: #ffffff; --bg-glass: rgba(255,255,255,0.72);
+    --text: #1d1d1f; --text-secondary: #86868b; --text-tertiary: #6e6e73;
+    --accent: #0071e3; --accent-hover: #0077ed; --accent-subtle: #e8f0fe;
     --divider: #d2d2d7;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.03);
     --shadow-md: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
@@ -22,7 +16,7 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #000000; --bg-card: #1d1d1f; --bg-glass: rgba(29,29,31,0.72);
+      --bg: #000; --bg-card: #1d1d1f; --bg-glass: rgba(29,29,31,0.72);
       --text: #f5f5f7; --text-secondary: #a1a1a6; --text-tertiary: #86868b;
       --accent: #2997ff; --accent-hover: #40a9ff; --accent-subtle: #1a2a3a;
       --divider: #333336;
@@ -31,109 +25,102 @@
     }
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
     background: var(--bg); color: var(--text); line-height: 1.5; font-size: 17px; letter-spacing: -0.022em;
   }
 
   /* Nav */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: var(--bg-glass); backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid transparent; transition: border-color 0.3s;
-  }
+  .nav { position: fixed; top:0; left:0; right:0; z-index:100; background: var(--bg-glass); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom:1px solid transparent; transition: border-color 0.3s; }
   .nav.scrolled { border-bottom-color: var(--divider); }
   .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; }
-  .nav-name { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+  .nav-name { font-size: 16px; font-weight: 600; }
   .nav-links { display: flex; gap: 22px; list-style: none; overflow-x: auto; }
   .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 13px; font-weight: 500; white-space: nowrap; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  /* Sections */
+  /* Section */
   .section { max-width: var(--max-width); margin: 0 auto; padding: 72px 24px; }
-  .section-header { margin-bottom: 36px; }
   .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
   .section-title { font-size: 36px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; }
-  .section-desc { font-size: 16px; font-weight: 400; color: var(--text-secondary); line-height: 1.45; margin-top: 6px; }
+  .section-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.45; margin-top: 6px; }
 
   /* Hero */
-  .hero { max-width: var(--max-width); margin: 0 auto; padding: 120px 24px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
-  .hero-photo {
-    flex: 0 0 160px; width: 160px; border-radius: 24px;
-    overflow: hidden; box-shadow: var(--shadow-md);
-  }
-  .hero-photo img { width: 100%; height: auto; display: block; }
+  .hero { max-width: var(--max-width); margin: 0 auto; padding: 120px 24px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; position: relative; overflow: hidden; }
+  .hero-blobs { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .hero-blobs .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.45; animation: blobFloat 12s ease-in-out infinite; }
+  .hero-blobs .blob:nth-child(1) { width: 400px; height: 400px; background: #c4d9ff; top: -120px; left: -80px; }
+  .hero-blobs .blob:nth-child(2) { width: 300px; height: 300px; background: #d4e8ff; top: 80px; right: -60px; animation-delay: -4s; animation-duration: 14s; }
+  .hero-blobs .blob:nth-child(3) { width: 250px; height: 250px; background: #e8f0fe; bottom: -80px; left: 30%; animation-delay: -8s; animation-duration: 16s; }
+  @media (prefers-color-scheme: dark) { .hero-blobs .blob:nth-child(1) { background: #1a2a4a; } .hero-blobs .blob:nth-child(2) { background: #1a3040; } .hero-blobs .blob:nth-child(3) { background: #1a2a3a; } }
+  @keyframes blobFloat { 0%,100% { transform: translate(0,0) scale(1); } 25% { transform: translate(40px,-30px) scale(1.08); } 50% { transform: translate(-20px,20px) scale(0.94); } 75% { transform: translate(-35px,-15px) scale(1.05); } }
+
+  .hero > * { position: relative; z-index: 2; }
+  .hero-photo { flex: 0 0 160px; width: 160px; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-md); }
+  .hero-photo img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
+  .hero-photo:hover img { transform: scale(1.04); }
   .hero-text { flex: 1; min-width: 280px; }
   .hero-text h1 { font-size: 52px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 8px; }
-  .hero-text .hero-title { font-size: 20px; font-weight: 400; color: var(--text-secondary); letter-spacing: -0.02em; margin-bottom: 16px; }
+  .hero-text .hero-title { font-size: 20px; color: var(--text-secondary); letter-spacing: -0.02em; margin-bottom: 16px; }
   .hero-text .hero-summary { font-size: 15px; color: var(--text-tertiary); line-height: 1.6; max-width: 520px; }
-  .hero-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; font-size: 13px; color: var(--text-secondary); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; font-size: 13px; color: var(--text-secondary); }
   .hero-meta span { background: var(--bg-card); padding: 6px 14px; border-radius: 12px; font-weight: 500; }
 
   /* Stats */
-  .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: var(--max-width); margin: 0 auto; padding: 0 24px 56px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; max-width: var(--max-width); margin: 0 auto; padding: 0 24px 56px; }
   .stat-item { background: var(--bg-card); border-radius: 14px; padding: 22px 12px; text-align: center; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
   .stat-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .stat-num { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-num { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; }
   .stat-unit { font-size: 14px; font-weight: 500; }
   .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
 
-  /* Card */
-  .card { background: var(--bg-card); border-radius: 18px; padding: 32px 36px; box-shadow: var(--shadow-sm); margin-bottom: 14px; }
-  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; gap: 8px; }
-  .card-title { font-size: 20px; font-weight: 600; letter-spacing: -0.022em; }
-  .card-subtitle { font-size: 14px; color: var(--text-secondary); }
-
-  /* Bullets */
-  .bullets { list-style: none; }
-  .bullets li { font-size: 15px; line-height: 1.6; padding: 5px 0 5px 20px; position: relative; }
-  .bullets li::before { content: ''; position: absolute; left: 2px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .bullets li em { font-style: normal; font-weight: 600; }
-
-  /* Two col */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-  /* Capability tags */
-  .cap-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-  .cap-tag { font-size: 14px; padding: 10px 20px; border-radius: 14px; background: var(--bg-card); box-shadow: var(--shadow-sm); font-weight: 500; letter-spacing: -0.01em; text-align: center; transition: transform 0.3s; }
-  .cap-tag:hover { transform: translateY(-2px); }
-
-  /* Module card */
-  .module { background: var(--bg-card); border-radius: 18px; padding: 28px 30px; box-shadow: var(--shadow-sm); border-left: 3px solid var(--accent); margin-bottom: 12px; transition: transform 0.3s, box-shadow 0.3s; }
-  .module:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  /* Cards */
+  .card { background: var(--bg-card); border-radius: 18px; padding: 32px 36px; box-shadow: var(--shadow-sm); margin-bottom: 14px; position: relative; overflow: hidden; }
+  .card::after { content: ''; position: absolute; top:0; left:-100%; width:60%; height:100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transform: skewX(-15deg); transition: left 0.65s cubic-bezier(0.25,0.1,0.25,1); pointer-events: none; z-index:5; }
+  .card:hover::after { left: 120%; }
+  @media (prefers-color-scheme: dark) { .card::after { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); } }
+  .module { background: var(--bg-card); border-radius: 18px; padding: 28px 30px; box-shadow: var(--shadow-sm); border-left: 3px solid var(--accent); margin-bottom: 12px; transition: transform 0.35s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.35s, border-color 0.35s; }
+  .module:hover { border-left-color: #0056b3; transform: translateX(4px); box-shadow: var(--shadow-md); }
+  @media (prefers-color-scheme: dark) { .module:hover { border-left-color: #40a9ff; } }
   .module h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
   .module .module-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
+  .module .module-desc strong { color: var(--text); }
 
-  /* Case study */
-  .case-card { background: var(--bg-card); border-radius: 18px; padding: 32px 36px; box-shadow: var(--shadow-sm); margin-bottom: 16px; }
-  .case-card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.022em; margin-bottom: 16px; }
-  .case-grid { display: grid; grid-template-columns: 80px 1fr; gap: 12px 20px; font-size: 14px; }
-  .case-grid .case-key { color: var(--text-secondary); font-weight: 500; text-align: right; padding-top: 2px; }
-  .case-grid .case-val { line-height: 1.55; }
-  .case-grid .case-val em { font-style: normal; font-weight: 600; }
+  /* Two/three col */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .strength-item { background: var(--bg-card); border-radius: 20px; padding: 28px 32px; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
+  .strength-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .strength-tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 12px; border-radius: 10px; margin-bottom: 12px; background: var(--accent-subtle); color: var(--accent); }
+  .strength-item h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .strength-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
 
-  /* Highlight box */
+  /* Cap tags */
+  .cap-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cap-tag { font-size: 14px; padding: 10px 20px; border-radius: 14px; background: var(--bg-card); box-shadow: var(--shadow-sm); font-weight: 500; text-align: center; transition: transform 0.3s; }
+  .cap-tag:hover { transform: translateY(-2px); }
+
+  /* Highlight */
   .highlight-box { background: var(--accent-subtle); border-radius: 16px; padding: 24px 28px; font-size: 15px; line-height: 1.6; margin: 16px 0; }
   .highlight-box strong { color: var(--accent); }
 
-  /* Image placeholder */
-  .img-placeholder {
-    background: var(--bg); border: 2px dashed var(--divider); border-radius: 14px;
-    padding: 20px; text-align: center; font-size: 13px; color: var(--text-tertiary); margin: 16px 0; transition: border-color 0.3s;
-  }
-  .img-placeholder:hover { border-color: var(--accent); }
-  .img-placeholder img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
-  .img-placeholder code { background: var(--bg-card); padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+  /* Case */
+  .case-card { background: var(--bg-card); border-radius: 18px; padding: 32px 36px; box-shadow: var(--shadow-sm); margin-bottom: 16px; }
+  .case-card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.022em; margin-bottom: 16px; }
+  .case-card img { max-width: 100%; border-radius: 12px; box-shadow: var(--shadow-sm); margin-bottom: 16px; transition: transform 0.7s cubic-bezier(0.25,0.1,0.25,1); }
+  .case-card img:hover { transform: scale(1.03); }
+  .case-grid { display: grid; grid-template-columns: 80px 1fr; gap: 12px 20px; font-size: 14px; }
+  .case-key { color: var(--text-secondary); font-weight: 500; text-align: right; padding-top: 2px; }
+  .case-val { line-height: 1.55; }
+  .case-val em { font-style: normal; font-weight: 600; }
 
-  /* Skill tags */
+  /* Skills */
   .skill-group { margin-bottom: 16px; }
   .skill-group h4 { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-tag { font-size: 13px; padding: 6px 14px; border-radius: 12px; border: 1px solid var(--divider); color: var(--text); font-weight: 450; transition: all 0.2s; }
-  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+  .skill-tag { font-size: 13px; padding: 6px 14px; border-radius: 12px; border: 1px solid var(--divider); transition: all 0.35s cubic-bezier(0.25,0.1,0.25,1); font-weight: 450; }
+  .skill-tag:hover { transform: translateY(-3px) scale(1.03); border-color: var(--accent); color: var(--accent); box-shadow: 0 4px 12px rgba(0,113,227,0.12); }
 
   /* Quotes */
   .quote-card { background: var(--bg-card); border-radius: 14px; padding: 22px 26px; box-shadow: var(--shadow-sm); border-left: 3px solid var(--accent); font-size: 15px; font-weight: 500; letter-spacing: -0.012em; line-height: 1.5; font-style: italic; margin-bottom: 10px; }
@@ -145,9 +132,9 @@
   .footer p { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
   .footer .hint { margin-top: 28px; font-size: 11px; color: var(--text-tertiary); }
 
-  /* Edit mode */
+  /* ===== Edit mode ===== */
   .edit-toolbar { position: fixed; bottom: 24px; right: 24px; z-index: 200; display: flex; gap: 8px; }
-  .edit-btn { height: 42px; padding: 0 18px; border-radius: 21px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; letter-spacing: -0.01em; transition: all 0.25s; font-family: inherit; display: flex; align-items: center; gap: 5px; }
+  .edit-btn { height: 42px; padding: 0 18px; border-radius: 21px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 5px; transition: all 0.25s; }
   .edit-btn.primary { background: var(--accent); color: #fff; box-shadow: 0 2px 12px rgba(0,113,227,0.3); }
   .edit-btn.primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
   .edit-btn.primary.active { background: #1d7a1d; }
@@ -159,12 +146,8 @@
   .editing .editable:hover { background: rgba(0,113,227,0.04); }
   .editing .editable:focus { outline: 2px solid var(--accent); background: rgba(0,113,227,0.06); }
   @media (prefers-color-scheme: dark) { .editing .editable:hover { background: rgba(41,151,255,0.08); } .editing .editable:focus { background: rgba(41,151,255,0.12); } }
-  .toast { position: fixed; top: 72px; left: 50%; transform: translateX(-50%); z-index: 300; background: #1d1d1f; color: #fff; padding: 10px 24px; border-radius: 20px; font-size: 13px; font-weight: 500; letter-spacing: -0.01em; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+  .toast { position: fixed; top: 72px; left: 50%; transform: translateX(-50%); z-index: 300; background: #1d1d1f; color: #fff; padding: 10px 24px; border-radius: 20px; font-size: 13px; font-weight: 500; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
   .toast.show { opacity: 1; }
-
-  /* Animations */
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* Responsive */
   @media (max-width: 768px) {
@@ -172,17 +155,16 @@
     .hero-text h1 { font-size: 40px; }
     .section-title { font-size: 28px; }
     .section { padding: 48px 20px; }
-    .stats-grid { grid-template-columns: repeat(3, 1fr); }
-    .stats-grid .stat-item:nth-child(4), .stats-grid .stat-item:nth-child(5) { grid-column: span 1; }
+    .stats-grid { grid-template-columns: repeat(3,1fr); }
     .two-col, .three-col { grid-template-columns: 1fr; }
-    .card { padding: 24px 20px; }
+    .card, .case-card { padding: 24px 20px; }
     .nav-links { display: none; }
     .case-grid { grid-template-columns: 1fr; }
-    .case-grid .case-key { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .case-key { text-align: left; font-size: 11px; text-transform: uppercase; }
   }
   @media (max-width: 480px) {
     .hero-text h1 { font-size: 34px; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
   }
 </style>
 </head>
@@ -207,17 +189,14 @@
   </div>
 </nav>
 
-<!-- ===== Hero ===== -->
-<section class="hero reveal">
-  <div class="hero-photo" id="heroPhoto">
-    <img src="头像.png" alt="杨凌杰">
-  </div>
+<!-- ===== Hero (always visible, no reveal) ===== -->
+<section class="hero">
+  <div class="hero-blobs"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
+  <div class="hero-photo"><img src="头像.png" alt="杨凌杰"></div>
   <div class="hero-text">
     <h1>杨凌杰</h1>
     <div class="hero-title">小红书营销 / 内容增长运营（AI教育方向）</div>
-    <div class="hero-summary">
-      两年教育行业内容增长运营经验。三项核心能力：<strong>内容驱动获客</strong>（B站/抖音/小红书三平台实操，B站单条内容1178赞，至今仍有引流效果）、<strong>内容SOP体系搭建</strong>（独立撰写4份运营SOP，方法论覆盖全团队）、<strong>增长全链路管理</strong>（从引流到私域到转化全跑通，个人GMV 156万，团队300万）。正在将增长运营方法论迁移到AI产品方向，日常使用ChatGPT/Claude等AI工具辅助工作。
-    </div>
+    <div class="hero-summary">两年教育行业内容增长运营经验。三项核心能力：<strong>内容驱动获客</strong>（B站/抖音/小红书三平台实操，B站单条内容1178赞，至今仍有引流效果）、<strong>内容SOP体系搭建</strong>（独立撰写4份运营SOP，方法论覆盖全团队）、<strong>增长全链路管理</strong>（从引流到私域到转化全跑通，个人GMV 156万，团队300万）。正在将增长运营方法论迁移到AI产品方向，日常使用ChatGPT/Claude等AI工具辅助工作。</div>
     <div class="hero-meta">
       <span>📍 杭州</span><span>🎓 2026年6月毕业</span><span>📅 到岗：2026年7月</span><span>📞 15605818763</span><span>✉️ yanglingjiee@163.com</span>
     </div>
@@ -225,7 +204,7 @@
 </section>
 
 <!-- ===== Stats ===== -->
-<div class="stats-grid reveal">
+<div class="stats-grid">
   <div class="stat-item"><div class="stat-num">1178<span class="stat-unit">赞</span></div><div class="stat-label">B站单条最高</div></div>
   <div class="stat-item"><div class="stat-num">156<span class="stat-unit">万</span></div><div class="stat-label">个人累计 GMV</div></div>
   <div class="stat-item"><div class="stat-num">300<span class="stat-unit">万</span></div><div class="stat-label">团队累计 GMV</div></div>
@@ -234,11 +213,9 @@
 </div>
 
 <!-- ===== Why Me ===== -->
-<section class="section reveal" id="why" style="padding-top:24px;">
-  <div class="section-header">
-    <div class="section-label">为什么我适合这个岗位</div>
-    <div class="section-title">内容增长 × AI教育</div>
-  </div>
+<section class="section" id="why">
+  <div class="section-label">为什么我适合这个岗位</div>
+  <div class="section-title">内容增长 × AI教育</div>
   <div class="highlight-box">
     <strong>精准学需要：</strong>能围绕教育IP做小红书内容策划、能通过数据复盘优化内容策略、能将个人能力转化为团队方法论的人。<br><br>
     <strong>我过去两年就在做这件事。</strong>载体是朋友圈和B站，底层逻辑完全相同——围绕一个教育IP人设，持续产出有风格、有判断、有效果的内容，建立用户信任，驱动转化。换到小红书，只是换了内容格式和分发机制，内容判断力和增长思维完全可迁移。
@@ -254,180 +231,134 @@
 </section>
 
 <!-- ===== Work Experience ===== -->
-<section class="section reveal" id="experience" style="padding-top:24px;">
-  <div class="section-header">
-    <div class="section-label">工作经历</div>
-    <div class="section-title">杭州质己教育科技有限公司</div>
-    <div class="section-desc">内容增长运营 · 2023.04 — 2025.08（2年5个月）</div>
-  </div>
+<section class="section" id="experience">
+  <div class="section-label">工作经历</div>
+  <div class="section-title">xx教育公司</div>
+  <div class="section-desc">内容增长运营 · 2023.04 — 2025.08（2年5个月）</div>
 
-  <div class="module">
-    <h3>1. 内容驱动增长：多平台获客内容策略与创作</h3>
-    <div class="module-desc">
-      负责B站、抖音、小红书<strong>三平台</strong>的内容获客。针对不同平台用户心智，设计差异化内容策略：<strong>小红书</strong>以场景化种草内容激发用户兴趣，<strong>B站</strong>以深度专业内容建立信任，<strong>抖音</strong>以短平快内容扩大曝光。单条B站评论获<strong>1178点赞</strong>，离职后仍持续有引流效果。入职首日即跑通完整获客路径并成交5单，两次获得<strong>周度转化率第一</strong>。
-    </div>
-  </div>
-
-  <div class="module">
-    <h3>2. IP内容全案运营与内容方法论</h3>
-    <div class="module-desc">
-      独立负责教育IP项目朋友圈全案内容运营。从IP人设定位出发，建立多品类内容矩阵，设计<strong>70%价值内容 + 30%软营销</strong>的内容策略节奏。内容获得用户及同事<strong>自发好评</strong>，直接驱动课程付费转化。后将内容判断标准和写作方法论沉淀为部门级培训，面向全团队做"如何写出高质量朋友圈"的分享，<strong>提升团队整体内容输出质量</strong>。
-    </div>
-  </div>
-
-  <div class="module">
-    <h3>3. 内容运营SOP体系搭建</h3>
-    <div class="module-desc">
-      将个人内容获客和转化经验提炼为可复制的标准化流程。独立撰写<strong>4份核心运营SOP</strong>：朋友圈内容运营SOP（选题分类、发文节奏、审核标准）、课程发售流程SOP、社群内容运营SOP、用户转化沟通框架SOP。被团队采用，实现内容获客从"依赖个人能力"到<strong>"依赖系统流程"</strong>的转型。
-    </div>
-  </div>
-
-  <div class="module">
-    <h3>4. 用户增长与数据驱动迭代</h3>
-    <div class="module-desc">
-      运营<strong>5000–10000人企业微信私域池</strong>。建立用户分层标签体系（成绩/放假时间/家庭情况/提分意愿），针对不同层级用户制定差异化沟通策略。通过周月度数据复盘，分析各渠道获客效率与转化率环比变化，定位问题环节并调整内容策略。个人累计贡献<strong>GMV 156万</strong>。
-    </div>
-  </div>
-
-  <div class="module">
-    <h3>5. 团队管理与内容质量管控</h3>
-    <div class="module-desc">
-      管理<strong>4–6人运营团队</strong>。建立"内容培训→质量审核→数据复盘"三层工作闭环：通过角色扮演模拟提升团队成员的内容沟通能力，通过每日文案审核把控品牌内容调性，通过周月度复盘驱动策略迭代。团队累计贡献<strong>GMV 300万</strong>。
-    </div>
-  </div>
+  <div class="module"><h3>1. 内容驱动增长：多平台获客内容策略与创作</h3><div class="module-desc">负责B站、抖音、小红书<strong>三平台</strong>的内容获客。针对不同平台用户心智，设计差异化内容策略：<strong>小红书</strong>以场景化种草内容激发用户兴趣，<strong>B站</strong>以深度专业内容建立信任，<strong>抖音</strong>以短平快内容扩大曝光。单条B站评论获<strong>1178点赞</strong>，离职后仍持续有引流效果。入职首日即跑通完整获客路径并成交5单，两次获得<strong>周度转化率第一</strong>。</div></div>
+  <div class="module"><h3>2. IP内容全案运营与内容方法论</h3><div class="module-desc">独立负责教育IP项目朋友圈全案内容运营。从IP人设定位出发，建立多品类内容矩阵，设计<strong>70%价值内容 + 30%软营销</strong>的内容策略节奏。内容获得用户及同事<strong>自发好评</strong>，直接驱动课程付费转化。后将内容判断标准和写作方法论沉淀为部门级培训，面向全团队做"如何写出高质量朋友圈"的分享，<strong>提升团队整体内容输出质量</strong>。</div></div>
+  <div class="module"><h3>3. 内容运营SOP体系搭建</h3><div class="module-desc">将个人内容获客和转化经验提炼为可复制的标准化流程。独立撰写<strong>4份核心运营SOP</strong>：朋友圈内容运营SOP（选题分类、发文节奏、审核标准）、课程发售流程SOP、社群内容运营SOP、用户转化沟通框架SOP。被团队采用，实现内容获客从"依赖个人能力"到<strong>"依赖系统流程"</strong>的转型。</div></div>
+  <div class="module"><h3>4. 用户增长与数据驱动迭代</h3><div class="module-desc">运营<strong>5000–10000人企业微信私域池</strong>。建立用户分层标签体系（成绩/放假时间/家庭情况/提分意愿），针对不同层级用户制定差异化沟通策略。通过周月度数据复盘，分析各渠道获客效率与转化率环比变化，定位问题环节并调整内容策略。个人累计贡献<strong>GMV 156万</strong>。</div></div>
+  <div class="module"><h3>5. 团队管理与内容质量管控</h3><div class="module-desc">管理<strong>4–6人运营团队</strong>。建立"内容培训→质量审核→数据复盘"三层工作闭环：通过角色扮演模拟提升团队成员的内容沟通能力，通过每日文案审核把控品牌内容调性，通过周月度复盘驱动策略迭代。团队累计贡献<strong>GMV 300万</strong>。</div></div>
 </section>
 
 <!-- ===== Project Cases ===== -->
-<section class="section reveal" id="cases" style="padding-top:24px;">
-  <div class="section-header">
-    <div class="section-label">项目案例</div>
-    <div class="section-title">两个案例说明我能做什么</div>
-  </div>
+<section class="section" id="cases">
+  <div class="section-label">项目案例</div>
+  <div class="section-title">两个案例说明我能做什么</div>
 
-  <!-- Case 1 -->
   <div class="case-card">
     <h3>📌 B站内容获客：单条内容 1178 赞的复盘</h3>
-    <img src="1178点赞.jpg" alt="B站单条评论1178点赞截图" style="max-width:100%;border-radius:12px;box-shadow:var(--shadow-sm);">
+    <img src="1178点赞.jpg" alt="B站单条评论1178点赞截图">
     <div class="case-grid">
-      <div class="case-key">背景</div>
-      <div class="case-val">公司以第三方口碑推荐模式获客，需要在各个平台通过内容化评论触达精准用户。</div>
-      <div class="case-key">动作</div>
-      <div class="case-val">选择<em>高考逆袭类热门视频评论区</em>（受众精准），设计"<em>情绪慰藉 + 真实经历 + 方法论 + 行动引导</em>"四层内容结构。以过来人身份提供价值，而非硬推课程。</div>
-      <div class="case-key">结果</div>
-      <div class="case-val">单条评论<em>1178点赞</em>，每年高考前夕持续有用户通过该内容找到我咨询，保守估计单条内容带来<em>100+精准用户</em>。离职后仍在为品牌引流。</div>
-      <div class="case-key">可迁移</div>
-      <div class="case-val">这套内容的底层逻辑——围绕精准受众、先提供价值再引导行动、保持真实人设——平移到任何内容平台（包括小红书）均适用。</div>
+      <div class="case-key">背景</div><div class="case-val">公司以第三方口碑推荐模式获客，需要在各个平台通过内容化评论触达精准用户。</div>
+      <div class="case-key">动作</div><div class="case-val">选择<em>高考逆袭类热门视频评论区</em>（受众精准），设计"<em>情绪慰藉 + 真实经历 + 方法论 + 行动引导</em>"四层内容结构。以过来人身份提供价值，而非硬推课程。</div>
+      <div class="case-key">结果</div><div class="case-val">单条评论<em>1178点赞</em>，每年高考前夕持续有用户通过该内容找到我咨询，保守估计单条内容带来<em>100+精准用户</em>。离职后仍在为品牌引流。</div>
+      <div class="case-key">可迁移</div><div class="case-val">这套内容的底层逻辑——围绕精准受众、先提供价值再引导行动、保持真实人设——平移到任何内容平台（包括小红书）均适用。</div>
     </div>
   </div>
 
-  <!-- Case 2 -->
   <div class="case-card">
     <h3>📌 数学老师IP朋友圈全案：从个人经验到可复制方法论</h3>
-    <img src="朋友圈案例.jpg" alt="朋友圈内容运营案例" style="max-width:100%;border-radius:12px;box-shadow:var(--shadow-sm);">
+    <img src="朋友圈案例.jpg" alt="朋友圈内容运营案例">
     <div class="case-grid">
-      <div class="case-key">背景</div>
-      <div class="case-val">教育IP需要建立有人情味、有专业度的品牌人设，朋友圈是用户转化的核心信任入口。</div>
-      <div class="case-key">动作</div>
-      <div class="case-val">确定IP人设定位与内容风格，设计<em>70%价值+30%营销</em>的内容节奏。每一条内容写"人话"，拒绝模板化营销文案。同时建立内容质量标准，对团队输出进行审核。</div>
-      <div class="case-key">结果</div>
-      <div class="case-val">内容获用户高频好评，被同事设为标杆。后将整套方法做成部门培训，提升团队整体内容质量。</div>
+      <div class="case-key">背景</div><div class="case-val">教育IP需要建立有人情味、有专业度的品牌人设，朋友圈是用户转化的核心信任入口。</div>
+      <div class="case-key">动作</div><div class="case-val">确定IP人设定位与内容风格，设计<em>70%价值+30%营销</em>的内容节奏。每一条内容写"人话"，拒绝模板化营销文案。同时建立内容质量标准，对团队输出进行审核。</div>
+      <div class="case-key">结果</div><div class="case-val">内容获用户高频好评，被同事设为标杆。后将整套方法做成部门培训，提升团队整体内容质量。</div>
     </div>
   </div>
 </section>
 
 <!-- ===== Skills & Other ===== -->
-<section class="section reveal" id="skills" style="padding-top:24px;">
-  <div class="section-header">
-    <div class="section-label">技能与其他</div>
-    <div class="section-title">附加能力</div>
-  </div>
+<section class="section" id="skills">
+  <div class="section-label">技能与其他</div>
+  <div class="section-title">附加能力</div>
   <div class="card">
-    <div class="skill-group">
-      <h4>AI 工具</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">ChatGPT / Claude</span><span class="skill-tag">AI 辅助内容创作</span><span class="skill-tag">AI 竞品分析</span><span class="skill-tag">持续关注AI教育行业</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h4>平台覆盖</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">小红书</span><span class="skill-tag">B站</span><span class="skill-tag">抖音</span><span class="skill-tag">企业微信私域</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h4>视觉与审美</h4>
-      <div class="skill-tags">
-        <span class="skill-tag">摄影 / 视觉判断力</span><span class="skill-tag">内容素材画面评估</span><span class="skill-tag">PPT 制作</span><span class="skill-tag">Excel 数据分析</span><span class="skill-tag">飞书</span>
-      </div>
-    </div>
+    <div class="skill-group"><h4>AI 工具</h4><div class="skill-tags"><span class="skill-tag">ChatGPT / Claude</span><span class="skill-tag">AI 辅助内容创作</span><span class="skill-tag">AI 竞品分析</span><span class="skill-tag">持续关注AI教育行业</span></div></div>
+    <div class="skill-group"><h4>平台覆盖</h4><div class="skill-tags"><span class="skill-tag">小红书</span><span class="skill-tag">B站</span><span class="skill-tag">抖音</span><span class="skill-tag">企业微信私域</span></div></div>
+    <div class="skill-group"><h4>视觉与审美</h4><div class="skill-tags"><span class="skill-tag">摄影 / 视觉判断力</span><span class="skill-tag">内容素材画面评估</span><span class="skill-tag">PPT 制作</span><span class="skill-tag">Excel 数据分析</span><span class="skill-tag">飞书</span></div></div>
   </div>
 </section>
 
 <!-- ===== Education ===== -->
-<section class="section reveal" style="padding-top:24px;">
-  <div class="section-header">
-    <div class="section-label">教育背景</div>
-    <div class="section-title">本科 · 2026年6月毕业</div>
+<section class="section">
+  <div class="section-label">教育背景</div>
+  <div class="section-title">本科 · 2026年6月毕业</div>
+</section>
+
+<!-- ===== User Feedback ===== -->
+<section class="section">
+  <div class="section-label">用户反馈</div>
+  <div class="section-title">来自用户和同事的真实评价</div>
+  <div class="section-desc">朋友圈内容、答疑服务获得的高频好评与认可</div>
+  <br>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
+    <img src="反馈1.jpg" alt="用户反馈1" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈2.jpg" alt="用户反馈2" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈3.jpg" alt="用户反馈3" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈4.jpg" alt="用户反馈4" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈5.jpg" alt="用户反馈5" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈6.jpg" alt="用户反馈6" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <img src="反馈7.jpg" alt="用户反馈7" style="width:100%;border-radius:14px;box-shadow:var(--shadow-sm);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
   </div>
 </section>
 
 <!-- ===== Footer ===== -->
-<footer class="footer reveal">
+<footer class="footer">
   <div class="footer-inner">
     <h3>杨凌杰</h3>
     <p>📞 15605818763 · ✉️ yanglingjiee@163.com</p>
     <p>杭州 · 2026年6月毕业 · 到岗时间：2026年7月</p>
     <p style="font-size:13px;color:var(--text-tertiary);margin-top:6px;">求职意向：小红书营销 / 内容增长运营（AI教育方向）· 浙江精准学</p>
   </div>
+  <div class="hint">编辑：点右下角 ✎ 编辑或按 Cmd+E</div>
 </footer>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
-  // Scroll animation
-  const observer = new IntersectionObserver((e) => {
-    e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); });
-  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-  });
+// ===== Nav scroll =====
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
 
-  // Inline edit system
-  (function() {
-    const body = document.body, toast = document.getElementById('toast');
-    const btnEdit = document.getElementById('btnEdit'), btnCancel = document.getElementById('btnCancel'), btnExport = document.getElementById('btnExport');
-    let editing = false, snapshot = null;
-    const EDITABLE = 'h1,h2,h3,h4,.hero-title,.hero-summary,.info-row,.stat-label,.stat-num,.stat-unit,.card-title,.card-subtitle,.bullets li,.section-title,.section-desc,.section-label,.module h3,.module .module-desc,.skill-tag,.nav-name,.case-card h3,.case-key,.case-val,.quote-card,.footer p,.footer h3,.skill-group h4,.highlight-box,.cap-tag,.hero-meta span'.split(',');
+// ===== 2. Inline Edit System =====
+(function() {
+  var body = document.body, toast = document.getElementById('toast');
+  var btnEdit = document.getElementById('btnEdit'), btnCancel = document.getElementById('btnCancel'), btnExport = document.getElementById('btnExport');
+  var editing = false, snapshot = null;
+  var EDITABLE = 'h1,h2,h3,h4,.hero-title,.hero-summary,.info-row,.stat-label,.stat-num,.stat-unit,.card-title,.card-subtitle,.module h3,.module .module-desc,.skill-tag,.nav-name,.case-card h3,.case-key,.case-val,.quote-card,.footer p,.footer h3,.skill-group h4,.highlight-box,.cap-tag,.hero-meta span,.section-title,.section-desc,.section-label'.split(',');
 
-    function toastMsg(msg) { toast.textContent = msg; toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => toast.classList.remove('show'), 1800); }
-    function enter() {
-      editing = true; snapshot = body.innerHTML; body.classList.add('editing');
-      EDITABLE.forEach(s => document.querySelectorAll(s).forEach(el => { el.classList.add('editable'); el.setAttribute('contenteditable','true'); }));
-      btnEdit.textContent = '✓ 完成'; btnEdit.classList.add('active'); btnCancel.style.display = 'flex'; btnExport.style.display = 'flex';
-      toastMsg('双击任意文字即可修改 · 改完点 ✓ 完成');
-    }
-    function exit(save) {
-      editing = false; body.classList.remove('editing');
-      document.querySelectorAll('.editable').forEach(el => { el.classList.remove('editable'); el.setAttribute('contenteditable','false'); });
-      btnEdit.textContent = '✎ 编辑'; btnEdit.classList.remove('active'); btnCancel.style.display = 'none'; btnExport.style.display = 'none';
-      if (save) { try { localStorage.setItem('resume-html', body.innerHTML); localStorage.setItem('resume-time', new Date().toISOString()); snapshot = body.innerHTML; toastMsg('✓ 已保存（刷新不丢失）'); } catch(e) { toastMsg('⚠ 请点 ⬇ 导出'); } }
-      else { if (snapshot) body.innerHTML = snapshot; document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); toastMsg('已恢复修改前的版本'); }
-    }
-    function exportHTML() {
-      const c = document.documentElement.cloneNode(true); c.classList.remove('editing');
-      c.querySelectorAll('.editable').forEach(el => { el.classList.remove('editable'); el.removeAttribute('contenteditable'); });
-      [c.querySelector('.edit-toolbar'), c.querySelector('.toast')].forEach(x => { if (x) x.remove(); });
-      const html = '<!DOCTYPE html>\n' + c.outerHTML.replace(/\s*editable\s*/g,'').replace(/\s*contenteditable="true"\s*/g,'').replace(/\s*editing\s*/g,'');
-      const b = new Blob([html],{type:'text/html'}); const u = URL.createObjectURL(b);
-      const a = document.createElement('a'); a.href = u; a.download = '简历-杨凌杰.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(u);
-      toastMsg('⬇ HTML 文件已下载');
-    }
-    document.addEventListener('keydown', e => { if (!editing || (e.key==='Enter' && !e.shiftKey && e.target.closest('.editable'))) e.preventDefault(); });
-    btnEdit.addEventListener('click', () => editing ? exit(true) : enter());
-    btnCancel.addEventListener('click', () => { if (confirm('放弃所有修改？')) exit(false); });
-    btnExport.addEventListener('click', exportHTML);
-    document.addEventListener('keydown', e => { if ((e.ctrlKey||e.metaKey) && e.key==='e') { e.preventDefault(); editing ? exit(true) : enter(); } });
-    try { const s = localStorage.getItem('resume-html'), t = localStorage.getItem('resume-time'); if (s && t && (Date.now()-new Date(t).getTime())/3600000<72) { body.innerHTML = s; document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); } } catch(e) {}
-  })();
+  function msg(t) { toast.textContent = t; toast.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(function() { toast.classList.remove('show'); }, 1800); }
+  function enter() {
+    editing = true; snapshot = body.innerHTML; body.classList.add('editing');
+    EDITABLE.forEach(function(s) { document.querySelectorAll(s).forEach(function(el) { el.classList.add('editable'); el.setAttribute('contenteditable','true'); }); });
+    btnEdit.textContent = '✓ 完成'; btnEdit.classList.add('active'); btnCancel.style.display = 'flex'; btnExport.style.display = 'flex';
+    msg('双击任意文字即可修改 · 改完点 ✓ 完成');
+  }
+  function exit(save) {
+    editing = false; body.classList.remove('editing');
+    document.querySelectorAll('.editable').forEach(function(el) { el.classList.remove('editable'); el.setAttribute('contenteditable','false'); });
+    btnEdit.textContent = '✎ 编辑'; btnEdit.classList.remove('active'); btnCancel.style.display = 'none'; btnExport.style.display = 'none';
+    if (save) { try { localStorage.setItem('resume-html', body.innerHTML); localStorage.setItem('resume-time', new Date().toISOString()); snapshot = body.innerHTML; msg('✓ 已保存（刷新不丢失）'); } catch(e) { msg('⚠ 请点 ⬇ 导出'); } }
+    else { if (snapshot) body.innerHTML = snapshot; msg('已恢复修改前的版本'); }
+  }
+  function exportHTML() {
+    var c = document.documentElement.cloneNode(true); c.classList.remove('editing');
+    c.querySelectorAll('.editable').forEach(function(el) { el.classList.remove('editable'); el.removeAttribute('contenteditable'); });
+    [c.querySelector('.edit-toolbar'), c.querySelector('.toast')].forEach(function(x) { if (x) x.remove(); });
+    var html = '<!DOCTYPE html>\n' + c.outerHTML.replace(/\s*editable\s*/g,'').replace(/\s*contenteditable="true"\s*/g,'').replace(/\s*editing\s*/g,'');
+    var b = new Blob([html],{type:'text/html'}); var u = URL.createObjectURL(b);
+    var a = document.createElement('a'); a.href = u; a.download = '简历-杨凌杰.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(u);
+    msg('⬇ HTML 文件已下载');
+  }
+  btnEdit.addEventListener('click', function() { editing ? exit(true) : enter(); });
+  btnCancel.addEventListener('click', function() { if (confirm('放弃所有修改？')) exit(false); });
+  btnExport.addEventListener('click', exportHTML);
+  document.addEventListener('keydown', function(e) { if ((e.ctrlKey||e.metaKey) && e.key==='e') { e.preventDefault(); editing ? exit(true) : enter(); } });
+  document.addEventListener('keydown', function(e) { if (!editing || (e.key==='Enter' && !e.shiftKey && e.target.closest('.editable'))) e.preventDefault(); });
+  try { var s = localStorage.getItem('resume-html'), t = localStorage.getItem('resume-time'); if (s && t && (Date.now()-new Date(t).getTime())/3600000<72) { body.innerHTML = s; } } catch(e) {}
+})();
 </script>
 </body>
 </html>
